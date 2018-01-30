@@ -1,4 +1,4 @@
-# Test
+# https://github.com/nickjj/ansible-docker/blob/master/tasks/main.yml
 ---
 - name: install packages
   apt: 
@@ -6,18 +6,20 @@
     state: installed
   with_items: "{{ packages }}"
     
-- name: curl key
-  shell: "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -"
-      
-- name: validate key
-  shell: "apt-key fingerprint 0EBFCD88"
-      
-- name: Add Docker repository and update apt cache
+- name: Get upstream APT GPG key
+  apt_key:
+    id: "{{ docker_apt_key }}"
+    keyserver: "{{ ansible_local.core.keyserver
+                   if (ansible_local|d() and ansible_local.core|d() and
+                       ansible_local.core.keyserver)
+                   else 'hkp://pool.sks-keyservers.net' }}"
+    state: "present"
+
+- name: Configure upstream APT repository
   apt_repository:
-    repo: "deb https://download.docker.com/linux/ubuntu xenial main"
-    mode: '644'
-    update_cache: yes
-    state: present   
+    repo: "{{ docker_repository }}"
+    state: "present"
+    update_cache: True
       
 - name: install docker
   apt: 
