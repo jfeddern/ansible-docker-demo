@@ -1,0 +1,18 @@
+# Beschreibung
+# Playbooks sind in Ansible die Skripte, die über die Command Line ausgeführt werden
+# z.B. kann dieses Playbook über den folgenden Befehl ausgeführt werden:
+# ansible-playbook setupDocker.yml
+#
+# Beschreibung zu den Parametern:
+# name - Lediglich zu Dokumentationszwecken gedacht, der Name wird angezeigt, wenn das Playbook ausgeführt wird
+# hosts - Hier können einzelne VMs, Gruppen (aus dem Inventory Host-File) oder alle VMs definiert werden auf denen die Tasks innerhalb des Playbooks ausgeführt werden sollen
+# become - Angabe, ob der User mit dem Ansible sich Remote via SSH connecten möchte gewechselt werden soll
+# become_method - User mit dem das Playbook ausgeführt wird, wird auf den Remote-Maschinen zum Root-User
+# roles - Angabe der Rollen, die innerhalb des Playbooks ausgeführt werden sollen (mehrere Rollen können angegeben werden)
+---
+- name: Playbook to setup Docker
+  hosts: docker
+  become: yes
+  become_method: sudo
+  roles:
+    - docker

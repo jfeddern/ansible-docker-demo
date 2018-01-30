@@ -1,0 +1,9 @@
+# Im Default-Verzeichnis einer Rolle können Variablen definiert werden
+# Diese Variablen können in der Tasks-main.yml innerhalb dieser Rolle verwendet werden
+---
+packages:
+    - git
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
