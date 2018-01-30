@@ -1,6 +1,3 @@
-# Beschreibung
-# Dieses Playbook startet die Rolle "vm_update" auf allen im Inventory-Hosts.yml definierten VMs
-# Mit dieser Rolle werden alle installierten Packages auf den jeweiligen VMs aktualisiert
 ---
 - name: Update virtual Machines
   hosts: all

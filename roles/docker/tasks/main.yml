@@ -1,8 +1,3 @@
-# Beschreibung
-# Diese Rolle installiert für Docker notwendige Packages auf der VM
-# Anschließend wird der für Docker benötigte Key heruntergeladen und dann Docker installiert
-# Danach wird ein User "test" in die Docker-Gruppe hinzugefügt, damit dieser auch Docker-Befehle ausführen kann ohne Root-Rechte zu bekommen
-# Zum Abschluss wird der Docker-Daemon und der Docker-Service neugestartet
 ---
 - name: install packages
   apt: 
