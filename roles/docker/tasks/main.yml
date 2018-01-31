@@ -1,5 +1,12 @@
 # https://github.com/nickjj/ansible-docker/blob/master/tasks/main.yml
 ---
+- name: install packages on localhost
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ localhost_packages }}"
+  delegate_to: localhost
+
 - name: install packages
   apt: 
     name: "{{item}}" 
