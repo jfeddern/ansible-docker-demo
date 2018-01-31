@@ -6,25 +6,28 @@
     state: installed
   with_items: "{{ packages }}"
     
-- name: Get upstream APT GPG key
-  apt_key:
-    id: "{{ docker_apt_key }}"
-    keyserver: "{{ ansible_local.core.keyserver
-                   if (ansible_local|d() and ansible_local.core|d() and
-                       ansible_local.core.keyserver)
-                   else 'hkp://pool.sks-keyservers.net' }}"
-    state: "present"
+- name: Ubuntu add docker key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
 
-- name: Configure upstream APT repository
+- name: create repo
+    command: bash -c "echo \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\" "
+    register: docker_repo
+
+- debug:
+  msg: "{{ docker_repo.stdout }}"
+
+- name: add docker repo
   apt_repository:
-    repo: "{{ docker_repository }}"
-    state: "present"
-    update_cache: True
+    repo: "{{ docker_repo.stdout }}"
+    state: present
       
 - name: install docker
   apt: 
     name: docker-ce 
-    state: installed
+    state: present
+    update_cache: yes
       
       
 - name: Add user to the docker group
