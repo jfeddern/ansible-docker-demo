@@ -1,8 +1,7 @@
-# https://github.com/nickjj/ansible-docker/blob/master/tasks/main.yml
 ---
 - name: install packages
   apt: 
-    name: "{{item}}" 
+    name: "{{ item }}"
     state: installed
   with_items: "{{ packages }}"
     

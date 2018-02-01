@@ -4,3 +4,8 @@
   apt:
     name: "*"
     state: latest
+
+- name: Install Git
+  apt:
+    name: git
+    state: installed
