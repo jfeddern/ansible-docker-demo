@@ -31,7 +31,7 @@
       
 - name: Add user to the docker group
   user:
-    name: "test"
+    name: "vagrant"
     groups: docker
     append: yes
 
@@ -48,3 +48,10 @@
       
 - name: restart docker
   command: service docker restart
+
+- name: Create a data container
+  docker_container:
+    name: mydata
+    image: busybox
+    volumes:
+      - /data
