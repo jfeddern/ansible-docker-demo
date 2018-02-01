@@ -45,9 +45,10 @@
     
 - name: reload daemon
   command: systemctl daemon-reload
-      
-- name: restart docker
-  command: service docker restart
+
+- service:
+    name: docker
+    state: started
 
 - name: Create a data container
   docker_container:
