@@ -12,11 +12,12 @@
   with_items: "{{ localhost_packages }}"
   delegate_to: localhost
 
-- name: Check PIP dependencies for ansible modules
+- name: Install pip dependencies on localhost
   pip:
     name: "{{ item }}"
     state: installed
   with_items: "{{ pip_dependencies }}"
+  delegate_to: localhost
     
 - name: Ubuntu add docker key
   apt_key:
