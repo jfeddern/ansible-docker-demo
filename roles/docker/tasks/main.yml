@@ -61,5 +61,6 @@
     name: mydata
     image: busybox
     state: started
+    restart_policy: always
     volumes:
       - /data
