@@ -5,19 +5,11 @@
     state: installed
   with_items: "{{ packages }}"
 
-- name: Install localhost dependencies
-  apt:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ localhost_packages }}"
-  delegate_to: localhost
-
 - name: Install pip dependencies on localhost
   pip:
     name: "{{ item }}"
     state: latest
   with_items: "{{ pip_dependencies }}"
-  delegate_to: localhost
     
 - name: Ubuntu add docker key
   apt_key:

@@ -6,8 +6,6 @@ packages:
     - ca-certificates
     - curl
     - software-properties-common
-
-localhost_packages:
     - python-pip
 
 # Dictionary with pip dependencies
