@@ -8,7 +8,7 @@ packages:
     - software-properties-common
 
 localhost_packages:
-    - pip
+    - python-pip
 
 # Dictionary with pip dependencies
 pip_dependencies:
