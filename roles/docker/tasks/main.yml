@@ -1,15 +1,22 @@
 ---
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ packages }}"
+
+- name: Install localhost dependencies
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ localhost_packages }}"
+  delegate_to: localhost
+
 - name: Check PIP dependencies for ansible modules
   pip:
     name: "{{ item.key }}"
     version: "{{ item.value }}"
   with_dict: "{{ pip_dependencies }}"
-
-- name: install packages
-  apt: 
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ packages }}"
     
 - name: Ubuntu add docker key
   apt_key:

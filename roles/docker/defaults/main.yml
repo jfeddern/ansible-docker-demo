@@ -8,10 +8,7 @@ packages:
     - software-properties-common
 
 localhost_packages:
-    - urllib3
-    - pyOpenSSL
-    - ndg-httpsclient
-    - pyasn1
+    - pip
 
 # Dictionary with pip dependencies
 pip_dependencies:
