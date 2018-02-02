@@ -12,3 +12,7 @@ localhost_packages:
     - pyOpenSSL
     - ndg-httpsclient
     - pyasn1
+
+# Dictionary with pip dependencies
+pip_dependencies:
+  docker-py: 1.7.0

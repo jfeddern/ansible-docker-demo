@@ -1,4 +1,10 @@
 ---
+- name: Check PIP dependencies for ansible modules
+  pip:
+    name: "{{ item.key }}"
+    version: "{{ item.value }}"
+  with_dict: "{{ pip_dependencies }}"
+
 - name: install packages
   apt: 
     name: "{{ item }}"
