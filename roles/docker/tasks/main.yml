@@ -15,7 +15,7 @@
 - name: Install pip dependencies on localhost
   pip:
     name: "{{ item }}"
-    state: installed
+    state: latest
   with_items: "{{ pip_dependencies }}"
   delegate_to: localhost
     
