@@ -11,3 +11,5 @@ packages:
 # Dictionary with pip dependencies
 pip_dependencies:
     - docker-py
+
+user: vagrant
